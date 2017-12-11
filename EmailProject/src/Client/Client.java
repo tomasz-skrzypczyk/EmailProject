@@ -29,7 +29,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	public Client(String name, ServerInterface chatServer) throws RemoteException {
 	this.setName(name);
 	this.setChatServer(chatServer);
-	chatServer.registerChatClient(name, this);
+	chatServer.registerClient(name, this);
 	clientList.put(name, this);
 	}
 	public void retrieveMessage(String message) throws RemoteException {

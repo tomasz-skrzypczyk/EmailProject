@@ -7,7 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 public class Email {
 	//to-delete--
 
-	private SimpleStringProperty topic, sender;
+	private SimpleStringProperty topic, sender, receiver;
 	private LocalDate date;
 	private LocalDate deleted;
 	private Integer ID;
@@ -85,6 +85,12 @@ public class Email {
 
 	public void setID(Integer iD) {
 		ID = iD;
+	}
+
+
+	public String getReceiver() {
+		
+		return receiver.get();
 	}
 	
 	

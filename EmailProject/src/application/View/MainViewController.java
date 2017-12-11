@@ -77,7 +77,7 @@ public class MainViewController {
 		String chatServerURL = "rmi://localhost:5099/RMIChatServer";
 		ServerInterface chatServer = (ServerInterface) Naming.lookup(chatServerURL);
 		this.client = new Client("John", chatServer);
-		mailPreview.setText("Nowa Wiadomość");
+		mailPreview.setText("New Message");
 		populateTableView();
 	}
 }
