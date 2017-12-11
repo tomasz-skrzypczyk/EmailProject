@@ -17,7 +17,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		Main.primaryStage = primaryStage;
 		Main.primaryStage.setTitle("E-mail service");
-		showMainView();//comment
+		showMainView();//comment x5
 	}
 	private void showMainView() throws IOException {
 	FXMLLoader loader = new FXMLLoader();
