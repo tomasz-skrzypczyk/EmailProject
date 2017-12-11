@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+//comment//
 
 public class Main extends Application {
 	private static Stage primaryStage;
@@ -17,7 +17,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		Main.primaryStage = primaryStage;
 		Main.primaryStage.setTitle("E-mail service");
-		showMainView();
+		showMainView();//comment
 	}
 	private void showMainView() throws IOException {
 	FXMLLoader loader = new FXMLLoader();
