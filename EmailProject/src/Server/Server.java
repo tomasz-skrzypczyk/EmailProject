@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Client.ClientInterface;
+import Model.Email;
 
 public class Server extends UnicastRemoteObject implements ServerInterface {
 	private static final long serialVersionUID = 1L;
@@ -27,12 +28,14 @@ public class Server extends UnicastRemoteObject implements ServerInterface {
 	
 	public boolean egsistsLogin(String name){
 		if(clients.contains(name)) {return true;}
-		else {return OutputMethods.egsistsLogin(name,this);}
+		else {return InputMethods.egsistsLogin(name,this);}
 		}
 	
-	public synchronized void registerClient(String clientname,ClientInterface client) throws RemoteException {
+	public synchronized void registerClient(String clientname, ClientInterface client) throws RemoteException {
 		if(egsistsLogin(clientname)) {
+			synchronized (onlineClients){
 		this.onlineClients.put(clientname , client);
+		}
 		} else {
 			//raiseError!!!
 		}
@@ -45,9 +48,15 @@ public class Server extends UnicastRemoteObject implements ServerInterface {
 		}
 	}
 	*/
+	
+	//to be changed totally!!!!
 	@Override
-	public synchronized void sendMessage(String message, String username) throws RemoteException {
-		 onlineClients.get(username).retrieveMessage(message);
+	public synchronized void sendMessage(Email email, String message) throws RemoteException {
+		//Integer ID = new Integer();
+		//email.setID(ID = getNewID());
+		//OutputMethods.addEmail(email);
+		//OutputMethods.writeMessage(message, ID)
+		// onlineClients.get(email.getReceivers().getIterator).retrieveMessage();
 		
 	}
 	@Override
@@ -55,7 +64,11 @@ public class Server extends UnicastRemoteObject implements ServerInterface {
 		if(messageList.containsKey(ID)) {
 		return messageList.get(ID);
 		} else {
-			return OutputMethods.getMessage(ID);
+			String l = new String();
+			synchronized (messageList){
+			messageList.put(ID, l = InputMethods.getMessage(ID));
+			}
+			return l;
 		}
 	}
 }

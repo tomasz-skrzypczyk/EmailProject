@@ -9,6 +9,7 @@ import java.util.HashMap;
 import Model.Email;
 import Server.ServerInterface;
 
+
 public class Client extends UnicastRemoteObject implements ClientInterface {
 	HashMap<Integer, Email> emailList = new HashMap<Integer, Email>();
 	HashMap<Integer, String> messageList = new HashMap<Integer, String>();
@@ -32,8 +33,8 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	chatServer.registerClient(name, this);
 	clientList.put(name, this);
 	}
-	public void retrieveMessage(String message) throws RemoteException {
-		System.out.println(message);	
+	public void retrieveMessage() throws RemoteException {
+		//notifyObserver();	
 	}
 	// to do
 	public String getMessage(Integer ID) throws RemoteException {

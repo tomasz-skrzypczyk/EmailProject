@@ -5,12 +5,16 @@ import java.time.LocalDate;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Email {
-	//to-delete--
+	
 
-	private SimpleStringProperty topic, sender, receiver;
+	private SimpleStringProperty topic, sender;
+	//deve diventare una Lista!!!!!!
+	private SimpleStringProperty receiver;
 	private LocalDate date;
 	private LocalDate deleted;
 	private Integer ID;
+	// Myenum status;
+	
 	
 	
 
