@@ -64,11 +64,6 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	}
 	public ObservableList<Email> getEmailList() throws RemoteException {
 		ObservableList<Email> emailList = FXCollections.observableArrayList();
-		//ObservableList<Email> emailList = chatServer.getEmailList(this);
-		//final Email email1 = new Email("Meeting","john@mail.com",LocalDate.of(2014, Month.MAY, 21),1);
-		//final Email email2 = new Email("Pieczenie pierników","piotr@mail.com",LocalDate.of(1952, Month.OCTOBER, 21),2);
-		//final Email email3 = new Email("Zakupy","john@mail.com",LocalDate.of(2017, Month.JANUARY, 21),3);
-		//emailList.addAll(email1, email2, email3);
 		emailList.addAll(chatServer.getEmailList(this));
 		return emailList;
 	}

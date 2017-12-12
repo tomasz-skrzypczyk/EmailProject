@@ -51,7 +51,7 @@ public class Server extends UnicastRemoteObject implements ServerInterface {
 	}
 	*/
 	
-	//to be changed totally!!!!
+	//to be changed totally!!!
 	@Override
 	public synchronized void sendMessage(Email email, String message) throws RemoteException {
 		//Integer ID = new Integer();

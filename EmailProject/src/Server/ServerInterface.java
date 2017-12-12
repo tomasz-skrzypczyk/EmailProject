@@ -10,7 +10,7 @@ import Model.Email;
 public interface ServerInterface extends Remote {
 	void registerClient(String Clientname, ClientInterface Client) throws RemoteException;
 	void sendMessage(Email email, String message) throws RemoteException;
-	//void broadcastMessage(String message) throws RemoteException;
+	//void broadcastMessage(String message) throws RemoteException; //
 	String getMessage(Integer ID) throws RemoteException;
 	ArrayList<Email> getEmailList(ClientInterface Client) throws RemoteException;
 	}

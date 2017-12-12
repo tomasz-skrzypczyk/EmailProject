@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-//comment//
+//comment
 
 public class Main extends Application {
 	private static Stage primaryStage;

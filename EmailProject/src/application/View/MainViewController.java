@@ -27,7 +27,7 @@ public class MainViewController {
 	//----------------end-----------------------------------
 
 	Client client ;
-	// -------------------mail--preview--------------
+	// ------------------mail--preview--------------
 	@FXML
 	TextArea mailPreview;
 

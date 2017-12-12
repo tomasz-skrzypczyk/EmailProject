@@ -3,15 +3,13 @@ package Model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import javafx.beans.property.SimpleStringProperty;
-
 public class Email implements Serializable {
 	
 
 	private static final long serialVersionUID = 1L;
-	private SimpleStringProperty topic, sender;
-	//deve diventare una Lista!!!!!!
-	private SimpleStringProperty receiver;
+	private String topic, sender;
+	//deve diventare una Lista!!!!!
+	private String receiver;
 	private LocalDate date;
 	private LocalDate deleted;
 	private Integer ID;
@@ -24,8 +22,8 @@ public class Email implements Serializable {
 	
 	public Email(String topic, String sender, LocalDate created,  Integer ID) {
 		super();
-		this.topic = new SimpleStringProperty(topic);
-		this.sender = new SimpleStringProperty(sender);
+		this.topic = topic;
+		this.sender = sender;
 		this.date = created;
 		
 		this.ID = ID;
@@ -33,24 +31,24 @@ public class Email implements Serializable {
 
 
 	public String getTopic() {
-		return topic.get();
+		return topic;
 	}
 
 
 
-	public void setTopic(SimpleStringProperty topic) {
+	public void setTopic(String topic) {
 		this.topic = topic;
 	}
 
 
 
 	public String getSender() {
-		return sender.get();
+		return sender;
 	}
 
 
 
-	public void setSender(SimpleStringProperty sender) {
+	public void setSender(String sender) {
 		this.sender = sender;
 	}
 
@@ -96,7 +94,7 @@ public class Email implements Serializable {
 
 	public String getReceiver() {
 		
-		return receiver.get();
+		return receiver;
 	}
 	
 	
