@@ -1,12 +1,14 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class Email {
+public class Email implements Serializable {
 	
 
+	private static final long serialVersionUID = 1L;
 	private SimpleStringProperty topic, sender;
 	//deve diventare una Lista!!!!!!
 	private SimpleStringProperty receiver;

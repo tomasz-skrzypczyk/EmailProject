@@ -1,6 +1,8 @@
 package Server;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -70,5 +72,24 @@ public class Server extends UnicastRemoteObject implements ServerInterface {
 			}
 			return l;
 		}
+	}
+
+	@Override
+	public ArrayList<Email> getEmailList(ClientInterface Client) {
+		 
+		//------------temporary--------
+		final Email email1 = new Email("Meeting","john@mail.com",LocalDate.of(2014, Month.MAY, 21),1);
+		final Email email2 = new Email("Pieczenie pierników","piotr@mail.com",LocalDate.of(1952, Month.OCTOBER, 21),2);
+		final Email email3 = new Email("Zakupy","john@mail.com",LocalDate.of(2017, Month.JANUARY, 21),3);
+		
+		ArrayList<Email> emailList = new ArrayList<Email>();
+		emailList.add(email1);
+		emailList.add(email2);
+		emailList.add(email3);
+
+		
+		
+		//---------non puo restituire Email perche email contiene SimpleStringProperty che non e serializzabile-----------
+		return emailList;
 	}
 }

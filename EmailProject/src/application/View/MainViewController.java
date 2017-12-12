@@ -12,7 +12,6 @@ import Client.Client;
 import Model.Email;
 import Server.ServerInterface;
 import application.Main;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -51,7 +50,7 @@ public class MainViewController {
 	private TableColumn<Email, LocalDate> dateColumn;
 
 	@FXML
-	private void populateTableView() {
+	private void populateTableView() throws RemoteException {
 		topicColumn.setCellValueFactory(new PropertyValueFactory<Email, String>("Topic"));
 		senderColumn.setCellValueFactory(new PropertyValueFactory<Email, String>("Sender"));
 		dateColumn.setCellValueFactory(new PropertyValueFactory<Email, LocalDate>("Date"));
@@ -59,11 +58,8 @@ public class MainViewController {
 	}
 
 	@FXML
-	private ObservableList<Email> getMessages() {
-		ObservableList<Email> messages = FXCollections.observableArrayList();
-		// ------------dump content ------------
-		messages.addAll(email1, email2, email3);
-		// ------------dump content ---- end----
+	private ObservableList<Email> getMessages() throws RemoteException {
+		ObservableList<Email> messages = client.getEmailList();
 		return messages;
 	}
 
