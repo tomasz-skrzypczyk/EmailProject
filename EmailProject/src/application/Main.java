@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,6 +27,7 @@ public class Main extends Application {
 	Scene scene = new Scene(mainLayout);
 	primaryStage.setScene(scene);
 	primaryStage.show();
+	//primaryStage.setOnCloseRequest(null);
 	}
 
 	public static void main(String[] args) {

@@ -7,6 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Collections;
 
 import Client.Client;
 import Model.Email;
@@ -34,7 +35,9 @@ public class MainViewController {
 	@FXML
 	private void showSelectedMessage() throws RemoteException {
 		Email selectedEmail = tableView.getSelectionModel().getSelectedItem();
+		if (selectedEmail != null) {
 		mailPreview.setText(client.getMessage(selectedEmail.getID()));
+		}
 		// -------naive--version
 		//mailPreview.setText(selectedEmail.getContent());
 	}
@@ -60,6 +63,7 @@ public class MainViewController {
 	@FXML
 	private ObservableList<Email> getMessages() throws RemoteException {
 		ObservableList<Email> messages = client.getEmailList();
+		Collections.sort(messages);
 		return messages;
 	}
 
