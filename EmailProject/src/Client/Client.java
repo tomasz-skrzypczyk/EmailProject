@@ -2,8 +2,6 @@
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.HashMap;
 
 import Model.Account;
@@ -18,21 +16,16 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	HashMap<Integer, String> messageList = new HashMap<Integer, String>();
 	public static HashMap<String, Client> clientList = new HashMap<String, Client>();
 	Account account;
-	//------------------dump content-----------------------
-		public static final Email email1 = new Email("Meeting","john@mail.com",LocalDate.of(2014, Month.MAY, 21),1);
-		public static final Email email2 = new Email("Let's go baking","piotr@mail.com",LocalDate.of(1952, Month.OCTOBER, 21),2);
-		public static final Email email3 = new Email("30% OFF this weekend","john@mail.com",LocalDate.of(2017, Month.JANUARY, 21),3);
-		//----------------end-----------------------------------
 	
 	
 	private static final long serialVersionUID = 1L;
 	private String name;
-	private static ServerInterface chatServer;
+	private static ServerInterface Server;
 	
 
 	public Client(String name, ServerInterface chatServer) throws RemoteException {
 	this.setName(name);
-	this.setChatServer(chatServer);
+	this.setServer(chatServer);
 	chatServer.registerClient(name, this);
 	clientList.put(name, this);
 	}
@@ -41,7 +34,7 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	}
 	// to do
 	public String getMessage(Integer ID) throws RemoteException {
-		String message = chatServer.getMessage(ID);
+		String message = Server.getMessage(ID);
 		//System.out.println(ID);
 		return message;
 	}
@@ -52,11 +45,11 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ServerInterface getChatServer() {
-		return chatServer;
+	public ServerInterface getServer() {
+		return Server;
 	}
-	public void setChatServer(ServerInterface chatServer) {
-		Client.chatServer = chatServer;
+	public void setServer(ServerInterface server) {
+		Client.Server = server;
 	}
 	public static Client getClient(String name) {
 		System.out.println("Poproszono o klienta: " + name);
@@ -64,8 +57,12 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 	}
 	public ObservableList<Email> getEmailList() throws RemoteException {
 		ObservableList<Email> emailList = FXCollections.observableArrayList();
-		emailList.addAll(chatServer.getEmailList(this));
+		emailList.addAll(Server.getEmailList(this));
 		return emailList;
+	}
+	public void unregister() throws RemoteException {
+		Server.unregisterClient(name);
+		
 	}
 
 }

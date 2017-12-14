@@ -54,13 +54,19 @@ public class Server extends UnicastRemoteObject implements ServerInterface {
 	//to be changed totally!!!
 	@Override
 	public synchronized void sendMessage(Email email, String message) throws RemoteException {
-		//Integer ID = new Integer();
-		//email.setID(ID = getNewID());
-		//OutputMethods.addEmail(email);
-		//OutputMethods.writeMessage(message, ID)
-		// onlineClients.get(email.getReceivers().getIterator).retrieveMessage();
+		Integer ID;
+		email.setID(ID = getNewID());
+		OutputMethods.addEmail(email);
+		OutputMethods.writeMessage(message, ID);  // ID.txt
+		// TO DO:
+		//onlineClients.get(email.getReceivers().getIterator).retrieveMessage();
 		
 	}
+	private Integer getNewID() {
+		InputMethods.getNewID();
+		return null;
+	}
+
 	@Override
 	public String getMessage(Integer ID) throws RemoteException {
 		if(messageList.containsKey(ID)) {
@@ -91,5 +97,11 @@ public class Server extends UnicastRemoteObject implements ServerInterface {
 		
 		//---------non puo restituire Email perche email contiene SimpleStringProperty che non e serializzabile-----------
 		return emailList;
+	}
+
+	@Override
+	public void unregisterClient(String Clientname) throws RemoteException {
+		this.onlineClients.remove(Clientname);
+		
 	}
 }

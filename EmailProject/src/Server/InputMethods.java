@@ -70,5 +70,10 @@ public class InputMethods {
 
 	}
 
+	public static void getNewID() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 

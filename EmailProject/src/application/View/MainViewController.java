@@ -6,7 +6,6 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.Collections;
 
 import Client.Client;
@@ -21,14 +20,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MainViewController {
-	//------------------dump content-----------------------
-	public static final Email email1 = new Email("Meeting","john@mail.com",LocalDate.of(2014, Month.MAY, 21),1);
-	public static final Email email2 = new Email("Pieczenie pierników","piotr@mail.com",LocalDate.of(1952, Month.OCTOBER, 21),2);
-	public static final Email email3 = new Email("Zakupy","john@mail.com",LocalDate.of(2017, Month.JANUARY, 21),3);
-	//----------------end-----------------------------------
+
 
 	Client client ;
-	// ------------------mail--preview--------------
+	
 	@FXML
 	TextArea mailPreview;
 
@@ -71,6 +66,20 @@ public class MainViewController {
 	@FXML
 	private void newMessageWindow() throws IOException {
 		Main.showNewMessageWindow();
+	}
+	
+	@FXML
+	private void onCloseAction() {
+		try {
+		{
+			client.unregister();
+			System.exit(0);
+			
+		}
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+		}
 	}
 
 	public void initialize() throws MalformedURLException, RemoteException, NotBoundException {

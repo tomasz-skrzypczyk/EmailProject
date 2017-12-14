@@ -8,7 +8,7 @@ public class Email implements Serializable, Comparable <Email> {
 	private static final long serialVersionUID = 1L;
 	private String topic, sender;
 	// deve diventare una Lista!!!!!
-	private String receiver;
+	private String receiver;// da cambiare!!!!!
 	private LocalDate date;
 	private LocalDate deleted;
 	private Integer ID;
@@ -73,6 +73,11 @@ public class Email implements Serializable, Comparable <Email> {
 	public String getReceiver() {
 		
 		return receiver;
+	}
+
+	public Object getReceivers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
